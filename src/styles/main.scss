@@ -1,0 +1,62 @@
+// 明亮/暗黑模式切换动画
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+.dark::view-transition-old(root) {
+  z-index: 1;
+}
+.dark::view-transition-new(root) {
+  z-index: 999;
+}
+::view-transition-old(root) {
+  z-index: 999;
+}
+::view-transition-new(root) {
+  z-index: 1;
+}
+
+// 重置顶部进度条颜色
+#nprogress .bar {
+  background: var(--el-color-primary)!important;
+}
+#nprogress .peg {
+  box-shadow: 0 0 10px var(--el-color-primary), 0 0 5px var(--el-color-primary)!important;
+}
+#nprogress .spinner-icon {
+  border-top-color: var(--el-color-primary)!important;
+  border-left-color: var(--el-color-primary)!important;
+}
+
+// 重置滚动条样式
+::-webkit-scrollbar{ /*滚动条整体样式*/
+  width: 6px; /*高宽分别对应横竖滚动条的尺寸*/
+  height: 6px;
+}
+::-webkit-scrollbar-thumb{ /*滚动条里面小方块*/
+  border-radius: 4px;
+  background-color: #d4d6d9;
+}
+::-webkit-scrollbar-track{ /*滚动条里面轨道*/
+  background-color: #f1f1f1;
+  opacity: .3;
+}
+
+// wangeditor样式设置
+// :root {
+//   --w-e-toolbar-bg-color: var(--el-bg-color)!important;
+//   --w-e-textarea-bg-color: var(--el-bg-color)!important;
+//   --w-e-toolbar-border-color: var(--el-border-color)!important;
+// }
+/* 暗色主题 */
+html.dark {
+  --w-e-toolbar-bg-color: var(--el-bg-color);
+  --w-e-toolbar-border-color: var(--el-bg-color);
+  --w-e-toolbar-color: var(--el-text-color-primary);
+  --w-e-textarea-bg-color: var(--el-bg-color);
+  --w-e-textarea-color: var(--el-input-text-color);
+  
+  --el-menu-hover-bg-color: var(--el-color-primary-dark-7);
+  --w-e-toolbar-active-bg-color: var(--el-color-primary-dark-7);
+}

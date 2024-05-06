@@ -1,0 +1,37 @@
+// 引入 ElementPlus 全局样式
+@use "element-plus/theme-chalk/src/index.scss" as *;
+// 引入 ElementPlus 暗黑模式样式
+@use 'element-plus/theme-chalk/src/dark/css-vars.scss' as *;
+
+// 标题栏
+:root {
+  --el-header-height: 50px;
+  --el-aside-width: 200px;
+}
+
+// 导航栏
+.el-menu {
+  border-right: none;
+}
+
+// 抽屉
+.el-drawer__header {
+  color: var(--el-text-color);
+}
+.el-drawer__body {
+  padding: 0;
+}
+.el-drawer__title {
+  font-size: 18px;
+}
+
+// 表单
+.el-form-item__label {
+  padding-right: 20px;
+}
+.el-select, .el-input, .el-textarea {
+  max-width: 360px;
+}
+.el-form-item__label {
+  height: auto;
+}
