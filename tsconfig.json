@@ -9,6 +9,6 @@
     }
   ],
   "compilerOptions": {
-    "types": ["vite/client"]
+    "module": "ESNext"
   }
 }

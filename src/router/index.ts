@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-router'
 import commonRoutes from './commonRoutes'
 import contentRoutes from './contentRoutes'
 import Layout from '@/layout/index.vue'
@@ -22,7 +22,7 @@ const routes: RouteItem[] = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(VITE_BASE_URL),
+  history: createWebHashHistory(VITE_BASE_URL),
   routes
 })
 
@@ -31,7 +31,7 @@ const whiteList = ['/login', '/regist']
 router.beforeEach((to, from , next) => {
   // 设置标题
   if (to.meta?.title) {
-    document.title = `${VITE_PROJECT_NAME ? VITE_PROJECT_NAME + '-' : ''}${to.meta.title}`
+    document.title = `${to.meta.title}${VITE_PROJECT_NAME ? ' - ' + VITE_PROJECT_NAME : ''}`
   }
   
   // 启动顶部进度条
