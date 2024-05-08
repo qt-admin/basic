@@ -34,7 +34,9 @@
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import type { RouteItem } from '@/router'
+import { useGlobalStore } from '@/stores';
 
+const global = useGlobalStore()
 const emits = defineEmits(['to-page'])
 type Props = {
   item: RouteItem,
@@ -59,6 +61,8 @@ function handleToPage() {
   if (!props.fullPath || router.currentRoute.value?.path === props.fullPath) return
 
   router.push(props.fullPath)
+  global.setActiveMenu(props.fullPath)
+
   emits('to-page')
 }
 

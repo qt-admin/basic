@@ -3,7 +3,7 @@
     <section v-if="!global.isSidebarHide" class="layout-sidebar">
       <el-scrollbar>
         <el-menu
-          :default-active="defaultActive"
+          :default-active="global.activeMenu"
           :collapse="global.isSidebarCollapsed"
         >
           <sidebar-menu-item
@@ -36,7 +36,7 @@
     class="important-w-auto"
   >
     <el-scrollbar>
-      <el-menu :default-active="defaultActive">
+      <el-menu :default-active="global.activeMenu">
         <sidebar-menu-item
           v-for="(item, index) in menuList"
           :key="item.path || index"
@@ -59,7 +59,6 @@ import type { RouteItem } from '@/router'
 const global = useGlobalStore()
 const router = useRouter()
 const isDrawerShow = ref(false) // 控制菜单抽屉显隐
-const defaultActive = ref('/home') // 默认激活的菜单
 const menuList = ref<RouteItem[]>([]) // 菜单列表
 
 // 监听侧边栏是否隐藏，若显示则关闭菜单抽屉
@@ -76,14 +75,12 @@ function toggleCollapse() {
 }
 
 onBeforeMount(() => {
-  global.setSidebarCollapse(global.getSidebarCollapse())
-
   // 初始化菜单
   const routes = (router.options.routes?.[0].children || []) as RouteItem[]
   menuList.value = routes.filter(item => !item.hidden)
 
   // 设置默认激活的菜单
-  defaultActive.value = router.currentRoute.value.path || '/home'
+  global.setActiveMenu(router.currentRoute.value.path || '/home')
 })
 </script>
 

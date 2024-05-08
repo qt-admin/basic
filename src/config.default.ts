@@ -15,5 +15,7 @@ export default {
   form: {
     // 打开方式：抽屉drawer、弹窗dialog
     mode: "drawer",
-  }
+  },
+  // 导航选项卡是否开启，默认关闭 false
+  navTabsShow: false
 }

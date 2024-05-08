@@ -2,10 +2,10 @@
   <main
     class="layout-main"
     :class="{ 'collapse': global.isSidebarCollapsed, 'hide': global.isSidebarHide }"
+    :style="!global.isNavTabsShow ? '--qt-nav-tabs-height: 0px; --qt-nav-tabs-margin: 0px;': ''"
   >
-    <div class="layout-breadcrumb">
-      <breadcrumb-area />
-    </div>
+    <breadcrumb-area />
+    <nav-tabs v-if="global.isNavTabsShow" />
     <el-scrollbar>
       <div class="layout-content">
         <el-scrollbar>
@@ -18,7 +18,8 @@
 
 <script setup lang="ts">
 import { useGlobalStore } from '@/stores'
-import BreadcrumbArea from './breadcrumb-area.vue'
+import BreadcrumbArea from '../breadcrumb-area.vue'
+import NavTabs from '../nav-tabs/index.vue'
 
 const global = useGlobalStore()
 
@@ -27,8 +28,7 @@ const global = useGlobalStore()
 <style scoped lang="scss">
 .layout-main {
   --main-horizontal-padding: 20px;
-  --breadcrumb-vertical-padding: 12px;
-  padding-top: var(--breadcrumb-vertical-padding);
+  padding-top: var(--qt-breadcrumb-margin);
   padding-left: calc(var(--el-aside-width) + var(--main-horizontal-padding));
   padding-right: var(--main-horizontal-padding);
   min-height: calc(100vh - var(--el-header-height));
@@ -43,14 +43,9 @@ const global = useGlobalStore()
     padding-right: 0;
   }
 }
-.layout-breadcrumb {
-  flex-shrink: 0;
-  margin-bottom: var(--breadcrumb-vertical-padding);
-  padding-left: var(--breadcrumb-vertical-padding);
-}
 .layout-content {
   background-color: var(--el-bg-color-overlay);
   padding: 20px;
-  min-height: calc(100vh - var(--el-header-height) - var(--breadcrumb-vertical-padding)*2 - 14px);
+  min-height: calc(100vh - var(--el-header-height) - var(--qt-nav-tabs-height) - var(--qt-nav-tabs-margin) - var(--qt-breadcrumb-height) - var(--qt-breadcrumb-margin)*2);
 }
 </style>

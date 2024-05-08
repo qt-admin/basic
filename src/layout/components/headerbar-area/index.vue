@@ -1,36 +1,23 @@
 <template>
   <header class="layout-headerbar">
     <div class="logo">
-      <img src="@/assets/qt_logo.png" />
+      <img src="@/assets/logo.png" />
       <span>{{ projectName }}</span>
     </div>
 
     <div class="layout-header-info">
       <!-- 消息通知弹出框 -->
-      <notice-popover ref="noticePopoverRef" />
-      <el-tooltip
-        ref="screenfullTooltipRef"
-        :content="isScreenfull ? '退出全屏' : '全屏'"
-        :show-after="400"
-        :auto-close="2000"
-      >
-        <span class="header-info-item" @click="handleSwitchScreenfull">
-          <el-icon size="16px">
-            <component :is="screenfullIcon" />
-          </el-icon>
-        </span>
-      </el-tooltip>
-      <el-tooltip
-        ref="modeTooltipRef"
-        :content="`${mode === 'light' ? '明亮模式' : '暗黑模式'}`" :show-after="400"
-        :auto-close="2000"
-      >
-        <span class="header-info-item" @click="handleChangeMode">
-          <el-icon size="20px">
-            <component :is="modeIcon" />
-          </el-icon>
-        </span>
-      </el-tooltip>
+      <notice-popover />
+      <span class="header-info-item" @click="handleSwitchScreenfull">
+        <el-icon size="16px">
+          <component :is="screenfullIcon" />
+        </el-icon>
+      </span>
+      <span class="header-info-item" @click="handleChangeMode">
+        <el-icon size="20px">
+          <component :is="modeIcon" />
+        </el-icon>
+      </span>
 
       <el-dropdown class="ml-10">
         <div class="header-info-user">
@@ -71,21 +58,16 @@ const userInfo = reactive({
   name: '',
   avatar: ''
 })
-const noticePopoverRef = ref()
 
 // 切换暗黑/明亮模式
-const modeTooltipRef = ref()
 function handleChangeMode(e: MouseEvent) {
-  modeTooltipRef.value?.hide()
   toggleTheme(e).then(() => {
     mode.value = mode.value === 'light' ? 'dark' : 'light'
   })
 }
 
 // 切换全屏/非全屏
-const screenfullTooltipRef = ref()
 function handleSwitchScreenfull() {
-  screenfullTooltipRef.value?.hide()
   if (screenfull.isEnabled) {
     screenfull.toggle()
   } else {

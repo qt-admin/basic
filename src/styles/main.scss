@@ -60,3 +60,10 @@ html.dark {
   --el-menu-hover-bg-color: var(--el-color-primary-dark-7);
   --w-e-toolbar-active-bg-color: var(--el-color-primary-dark-7);
 }
+
+:root {
+  --qt-nav-tabs-height: 26px;
+  --qt-nav-tabs-margin: 12px;
+  --qt-breadcrumb-height: 12px;
+  --qt-breadcrumb-margin: 12px;
+}

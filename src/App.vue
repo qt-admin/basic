@@ -7,24 +7,13 @@
 </template>
 <script setup lang="ts">
 import zhCn from 'element-plus/es/locale/lang/zh-cn.mjs'
-import ResizeObserver from 'resize-observer-polyfill'
 import { onMounted } from 'vue';
 import { useGlobalStore } from '@/stores'
 
 const global = useGlobalStore()
-let resizeObserver
 onMounted(() => {
-  const dom = document.getElementsByTagName('body')[0]
-
-  resizeObserver = new ResizeObserver((entries, observer) => {
-    const w = entries[0].contentRect.width
-    // 判断侧边栏是否隐藏
-    global.judgeSidebarHide(!!(w < 770))
-  })
-  resizeObserver.observe(dom)
-
-  // 初始化主题色
-  global.changeThemeColor(global.getThemeColor())
+  // 初始化配置
+  global.initSetting()
 })
 </script>
 <style>

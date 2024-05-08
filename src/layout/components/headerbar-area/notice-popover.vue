@@ -1,16 +1,9 @@
 <template>
-  <el-tooltip
-    :disabled="isTooltipDisabled"
-    content="消息通知"
-    :show-after="400"
-    :auto-close="2000"
-  >
-    <span class="header-info-item">
-      <el-icon ref="popoverRef" size="16px">
-        <Bell />
-      </el-icon>
-    </span>
-  </el-tooltip>
+  <span class="header-info-item" :disabled="isTooltipDisabled">
+    <el-icon ref="popoverRef" size="16px" class="icon-badge" :class="{ 'dot' : !!list.length }">
+      <Bell />
+    </el-icon>
+  </span>
   <el-popover
     :virtual-ref="popoverRef"
     trigger="click"
@@ -92,7 +85,37 @@ onBeforeMount(() => {
   transition: background-color .1s linear;
   &:hover {
     background-color: var(--el-color-primary-light-3);
+    .icon-badge {
+      transform-origin: center top;
+      animation: shaking 1s alternate forwards;
+    }
   }
+}
+.icon-badge {
+  position: relative;
+  &.dot {
+    &::after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background-color: var(--el-color-danger);
+      border-radius: 50%;
+      right: -3px;
+      top: -3px;
+    }
+  }
+}
+@keyframes shaking {
+  10% { transform: translate(.125rem, -0.125rem) rotate(0deg) scale(1); }
+	15% { transform: translate(-0.125rem, -0.125rem) rotate(-40deg) scale(1); }
+	25% { transform: translate(.0625rem, -0.0625rem) rotate(30deg) scale(1.1); }
+	40% { transform: translate(.125rem, -0.125rem) rotate(-20deg) scale(1.2); }
+	55% { transform: translate(-0.125rem, -0.125rem) rotate(15deg) scale(1.3); }
+	70% { transform: translate(.0625rem, -0.0625rem) rotate(-10deg) scale(1.2); }
+	85% { transform: translate(0rem, 0rem) rotate(5deg) scale(1); }
+	100% { transform: translate(0rem, 0rem) rotate(0deg) scale(1); }
 }
 .notice-title {
   display: flex;

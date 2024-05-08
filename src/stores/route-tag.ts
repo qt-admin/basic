@@ -10,7 +10,7 @@ export type RouteTag = {
   closeable?: boolean
 }
 
-const useRouteTagStore = defineStore('routeTags', () => {
+export const useRouteTagStore = defineStore('routeTags', () => {
   const router = useRouter()
   const routesAll = getAffixedRoutes()
   const routeTags = ref<RouteTag[]>(JSON.parse(JSON.stringify(routesAll)))

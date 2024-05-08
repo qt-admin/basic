@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-rou
 import commonRoutes from './commonRoutes'
 import contentRoutes from './contentRoutes'
 import Layout from '@/layout/index.vue'
-import { useRouteTagsStore } from '@/stores/routeTags'
+import { useRouteTagStore } from '@/stores'
 import { getToken, nprogress } from '@/utils'
 
 export type RouteItem = RouteRecordRaw & {
@@ -54,8 +54,8 @@ router.afterEach((to) => {
   nprogress.close()
   
   // 处理路由标签
-  const store = useRouteTagsStore()
-  store.add((to.meta?.title || '') as string, to.path)
+  const routeTag = useRouteTagStore()
+  routeTag.add((to.meta?.title || '') as string, to.path)
 })
 
 export default router

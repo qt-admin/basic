@@ -7,7 +7,7 @@
 
   <el-drawer
     v-model="isDrawerShow"
-    title="自定义配置"
+    title="偏好设置"
     :size="300"
     class="relative"
   >
@@ -18,7 +18,7 @@
           <el-color-picker
             v-model="global.theme"
             :predefine="['#1677ff', '#2f54eb', '#13c2c2', '#52c41a', '#f5222d', '#fa541c', '#fa8c16', '#a0d911']"
-            @change="global.changeThemeColor"
+            @change="global.setThemeColor"
           />
         </div>
       </li>
@@ -34,7 +34,23 @@
             inline-prompt
             width="55"
             style="--el-switch-on-color: var(--el-color-primary); --el-switch-off-color: var(--el-color-primary-light-3)"
-            @change="global.changeFormMode"
+            @change="global.setFormMode"
+          />
+        </div>
+      </li>
+      <li class="setting-item">
+        <div class="setting-label">导航选项卡</div>
+        <div class="setting-content">
+          <el-switch
+            v-model="global.isNavTabsShow"
+            active-text="开启"
+            inactive-text="关闭"
+            :active-value="true"
+            :inactive-value="false"
+            inline-prompt
+            width="55"
+            style="--el-switch-on-color: var(--el-color-primary); --el-switch-off-color: var(--el-color-primary-light-3)"
+            @change="global.setNavTabsStatus"
           />
         </div>
       </li>
@@ -70,8 +86,8 @@ function handleReset() {
 }
 
 onBeforeMount(() => {
-  global.changeThemeColor(global.getThemeColor())
-  global.changeFormMode(global.getFormMode())
+  global.setThemeColor(global.getThemeColor())
+  global.setFormMode(global.getFormMode())
 })
 </script>
 
