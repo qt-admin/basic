@@ -1,6 +1,6 @@
 ## 项目简介
 
-QT-Admin（[Github 地址](https://github.com/partiny/qt-admin)、[Gitee 地址](https://gitee.com/partiny/qt-admin)） 是基于 Vue3 + Vite5 + Typescript5 + Element-Plus + Pinia + Axios 等主流技术栈构建的开源后台管理系统。
+QT-Admin（[Github 地址](https://github.com/qt-admin/basic.git)、[Gitee 地址](https://gitee.com/qt-admin/basic.git)） 是基于 Vue3 + Vite5 + Typescript5 + Element-Plus + Pinia + Axios 等主流技术栈构建的开源后台管理系统。
 
 ## 项目计划
 
@@ -43,9 +43,9 @@ QT-Admin（[Github 地址](https://github.com/partiny/qt-admin)、[Gitee 地址]
 ```bash
 # 克隆代码
 # Github 地址
-git clone https://github.com/partiny/qt-admin.git
+git clone https://github.com/qt-admin/basic.git
 # Gitee 地址
-git clone https://gitee.com/partiny/qt-admin.git
+git clone https://gitee.com/qt-admin/basic.git
 
 # 切换目录
 cd qt-admin
