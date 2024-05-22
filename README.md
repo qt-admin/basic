@@ -14,6 +14,20 @@ QT-Admin（[Github 地址](https://github.com/qt-admin/basic.git)、[Gitee 地�
 4. 支持个性化配置，如自定义主题色、自定义表单弹窗样式（后续会支持更多功能）；
 5. ...
 
+## 项目一览
+
+[传送门](https://qt-admin.github.io/#/home)
+
+<div>
+  <img src="./src/assets/p1.png" />
+  <p align="center">[ 暗黑/明亮主题 ]</p>
+  <img src="./src/assets/p2.png" />
+  <p align="center">[ 主题色配置 ]</p>
+  <img src="./src/assets/p3.png" />
+  <p align="center">[ 移动端适配 ]</p>
+</div>
+
+
 ## 版本依赖
 
 <div align="left">
