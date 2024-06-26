@@ -61,12 +61,15 @@ function handleContextMenuShow(index: number) {
   const y = dom.top + dom.height + 6
 
   if (contextMenu.show && index === contextMenu.index) return
-  contextMenu.index = index
-  
   if (contextMenu.show) contextMenu.show = false
-  contextMenu.x = x
-  contextMenu.y = y
-  contextMenu.show = true
+
+  const timer = setTimeout(() => {
+    clearTimeout(timer)
+    contextMenu.index = index
+    contextMenu.x = x
+    contextMenu.y = y
+    contextMenu.show = true
+  })
 }
 
 // 移除当前标签的鼠标右键事件

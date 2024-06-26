@@ -261,6 +261,14 @@ const routeTool = {
       meta: {
         title: '地图'
       }
+    },
+    {
+      path: 'json-format',
+      name: 'JSONFormat',
+      component: () => import('@/views/page-tool/json-format.vue'),
+      meta: {
+        title: 'JSON格式化'
+      }
     }
   ]
 }
